@@ -155,5 +155,10 @@ function chk_count(){
 	console.log(count);
 	document.getElementById("info1").innerHTML=count;
 }
-
+function submit(){
+	
+	var result=100;
+	console.log(count);
+	document.getElementById("info2").innerHTML="YOUR SCORE IS "+(result-count);
+}
 
