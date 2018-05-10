@@ -1,14 +1,12 @@
-
-      html, body {
+	html, body {
         background-color: #FAFAFA;
 		position:fixed;
 		width:70%;height:110%;
-		left:225px;
-		bottom:200px;
+		
       }
 	.lol{
 		position:fixed;
-		width:900px;height:750px;
+		width:1000px;height:750px;
 		left:195px;
 		top:60px;	
 		bottom:200px;
