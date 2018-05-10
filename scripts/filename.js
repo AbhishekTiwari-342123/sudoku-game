@@ -1,6 +1,6 @@
 var count=0;
 var totalSeconds = 0;
-var c=0;	
+var c=0;
 function test()
 {
 	var arr="";
@@ -16,7 +16,8 @@ function test()
 		arr=arr+result;
 		arr=arr.toString();
 	}
-	console.log(box_count);
+	//document.getElementById("percent_msg").innerHTML="YOU HAVE COMPLETED "+ ((81-box_count)/81*100).toFixed(2)+"% OF THE GAME" ;
+	console.log(((81-box_count)/81*100).toFixed(2));
 	var str = arr;
 	var arr1=[];
 	for(i=0,k=0,l=9;i<9;i++,k+=9,l+=9)
@@ -165,12 +166,33 @@ function chk_count()
 }
 function submit()
 {
-	var result=100;
-	document.getElementById("score_msg").innerHTML="YOUR SCORE IS "+(result-count);
+	var score=0;
+	var empty=0;
+	for(i=0;i<81;i++)
+	{	
+		var result = document.getElementById("cell-"+i).value;
+		if(result=="")
+			empty++;
+	}
+	if(totalSeconds<=300 && totalSeconds>0 && empty==0)
+		score=50;
+	else
+		score=0;
+	if(totalSeconds>300 && totalSeconds<600)
+		score=30;
+	if(totalSeconds>600)
+		score=20;
+	if(count>2)
+		score=score-count*5;
+	document.getElementById("score_msg").innerHTML="YOUR SCORE IS "+score;
+	for(i=0;i<81;i++)
+	{	
+		document.getElementById("cell-"+i).value="disabled";
+		
+	}
 }
 function time()
 {
-	var minutesLabel = document.getElementById("minutes");
 	var secondsLabel = document.getElementById("seconds");
 	setInterval(setTime, 1000);
 	function setTime()
@@ -187,8 +209,18 @@ function stop()
 	else
 		document.getElementById("chk_msg").innerHTML="CHECK  BUTTON USED "+count+" TIMES.";
 	document.getElementById("time_msg").innerHTML= "YOU TOOK ABOUT " +(totalSeconds/60).toFixed(2)+ " minutes";
+	document.getElementById("tim2").innerHTML= "TIME :"+totalSeconds+" s";
+	
 }
 function reload()
 {
 	location.reload();
 }
+
+
+
+
+
+
+
+
