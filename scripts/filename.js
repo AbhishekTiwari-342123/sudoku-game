@@ -161,4 +161,23 @@ function submit(){
 	console.log(count);
 	document.getElementById("info2").innerHTML="YOUR SCORE IS "+(result-count);
 }
+function time()
+{
+	var minutesLabel = document.getElementById("minutes");
+	var secondsLabel = document.getElementById("seconds");
+	setInterval(setTime, 1000);
+	function setTime() {
+  		++totalSeconds;
+		var x= totalSeconds; 
+  		secondsLabel.innerHTML =totalSeconds;
+  		return x;
+		 }
+}
+function stop()
+{
+	document.getElementById("tim").style.visibility = 'hidden';
+	document.getElementById("fi").innerHTML= "YOU TOOK ABOUT " +(totalSeconds/60).toFixed(2)+ " minutes";
+}
+
+
 
