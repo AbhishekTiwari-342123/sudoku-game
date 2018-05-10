@@ -184,6 +184,8 @@ function submit()
 		score=20;
 	if(count>2)
 		score=score-count*5;
+	if(score<0)
+		score=0;
 	document.getElementById("score_msg").innerHTML="YOUR SCORE IS "+score;
 	for(i=0;i<81;i++)
 	{	
