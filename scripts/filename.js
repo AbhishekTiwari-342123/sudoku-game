@@ -1,6 +1,8 @@
 var count=0;
 var totalSeconds = 0;
 var c=0;
+var reset="";
+var timer=null;
 function test()
 {
 	var arr="";
@@ -178,32 +180,38 @@ function submit()
 		score=50;
 	else
 		score=0;
-	if(totalSeconds>300 && totalSeconds<600)
+	if(totalSeconds>300 && totalSeconds<600 && empty==0)
 		score=30;
-	if(totalSeconds>600)
+	else 
+		score=0;
+	if(totalSeconds>600 && empty==0)
 		score=20;
+	else
+		score=0;
 	if(count>2)
-		score=score-count*5;
+		score=score-(count-2)*5;
 	if(score<0)
 		score=0;
 	document.getElementById("score_msg").innerHTML="YOUR SCORE IS "+score;
-	for(i=0;i<81;i++)
-	{	
-		document.getElementById("cell-"+i).value="disabled";
-		
-	}
+	document.getElementById("count").style.visibility = 'hidden';
+	document.getElementById("score").style.visibility = 'hidden';
+	document.getElementById("chk").style.visibility = 'hidden';
 }
 function time()
 {
 	var secondsLabel = document.getElementById("seconds");
-	setInterval(setTime, 1000);
+	
+	if (!timer) {
+      timer = setInterval(setTime, 1000);
+    }
+	
 	function setTime()
 	{
   		++totalSeconds;
   		secondsLabel.innerHTML =totalSeconds;
 	}
 }
-function stop()
+function stoop()
 {
 	document.getElementById("tim").style.visibility = 'hidden';
 	if(count==1)
@@ -212,16 +220,71 @@ function stop()
 		document.getElementById("chk_msg").innerHTML="CHECK  BUTTON USED "+count+" TIMES.";
 	document.getElementById("time_msg").innerHTML= "YOU TOOK ABOUT " +(totalSeconds/60).toFixed(2)+ " minutes";
 	document.getElementById("tim2").innerHTML= "TIME :"+totalSeconds+" s";
+	document.getElementById("sub").style.visibility = 'hidden';
+	document.getElementById("chk").style.visibility = 'hidden';
+	document.getElementById("start").style.visibility = 'hidden';
+	document.getElementById("gen").style.visibility = 'hidden';
+	document.getElementById("ref").style.visibility= 'visible';
+	
+	
+}
+function generate()
+{	
+	
+    if (timer) {
+      totalSeconds = 0;
+      stop();
+    }
+
+	var result="";
+	var dat1=["004300209005009001070060043006002087190007400050083000600000105003508690042910300","600120384008459072000006005000264030070080006940003000310000050089700000502000190","000000657702400100350006000500020009210300500047109008008760090900502030030018206","065370002000001370000640800097004028080090001100020940040006700070018050230900060","850420370003000010000170009000500602029304000010000438046090805005000900702840003","680905000003000508402108703390720800000000010045006900060804002001002075700013000","020980040030047601019006080700490000800023907000605000904800006001000300350014020","290041000470302050000060208039400005100000070504100603613200704000003080005900100","431800006000300010000006205609134070020000040000570089003659020500080104807000003"];
+	var test=dat1[Math.floor(Math.random()*dat1.length)];
+	reset=test;
+	console.log(dat1.length);
+	for(i=0;i<81;i++)
+	{
+		if(test[i]==0)
+			result="";
+		else
+			result=test[i];
+		document.getElementById("cell-"+i).value=result;
+	}
+	for(i=0;i<81;i++)
+	{
+		var disable=document.getElementById("cell-"+i).value;
+		if(disable!="")
+			document.getElementById("cell-"+i).disabled=true;
+		else
+			document.getElementById("cell-"+i).disabled=false;
+	}
+	
 	
 }
 function reload()
 {
+	var result2="";
+	console.log(reset);
+	for(i=0;i<81;i++)
+	{
+		if(reset[i]==0)
+			result2="";
+		else
+			result2=reset[i];
+		document.getElementById("cell-"+i).value=result2;
+	}
+	for(i=0;i<81;i++)
+	{
+		var disable=document.getElementById("cell-"+i).value;
+		if(disable!="")
+			document.getElementById("cell-"+i).disabled=true;
+		else
+			document.getElementById("cell-"+i).disabled=false;
+	}
+}
+function refresh(){
+	
 	location.reload();
 }
-
-
-
-
 
 
 
