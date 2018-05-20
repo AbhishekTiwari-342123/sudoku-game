@@ -4,7 +4,6 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    
     <title>sudoku solver </title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
@@ -13,20 +12,15 @@
 	<script type="text/javascript" src="scripts/filename.js" ></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script type="text/javascript" src="http://gc.kis.v2.scr.kaspersky-labs.com/F1D5F8F5-16A7-2640-AF72-ECDAD657BF11/main.js" charset="UTF-8"></script>
-	  	<link rel="stylesheet" href="style.css">  
-	  
-	  <style type="text/css">
-    
-</style>	
-		
+	<link rel="stylesheet" href="style.css">  	
   </head>
   <body>
    <div class="w3-card-4 lol">
-    <div class="container">
+    <div class="container" >
       
-      <h1>SUDOKU GAME</h1>
+      <h1 style="font-family:cursive;font-style:oblique;position:fixed;top:180px;left:530px;">SUDOKU GAME</h1>
 
-      <table id="grid" style="position:fixed;left:600px;top:210px;">
+      <table id="grid" style="position:fixed;left:600px;top:310px;">
 
         <tr>
           <td><input id="cell-0"  type="number" min="1" max="9"></td>
@@ -154,21 +148,22 @@
           <td><input id="cell-80" type="number" min="1" max="9" ></td>
         </tr>
       </table>
-		<button id="sub" style="position:fixed;top:200px;left:400px;" onclick="reload();">RESET GAME</button>
-		<button id="chk" onmousedown="test()" onmouseup="change()" onclick="chk_count()"style="position:fixed;top:290px;left:290px;">CHECK PROGRESS</button>
-		<button id="score" style="position:fixed;top:550px;left:320px;" onclick="submit();stoop();">SCORE</button>
-		<button id="gen" style="position:fixed;top:750px;left:270px;" onclick="generate();">GENERATE GAME BOARD</button>
-		<button id="start" onclick="time();" style="position:fixed;top:200px;">START GAME</button>
-		<p id="count" style="position:fixed;left:320px;top:350px;font-size:100px;">0</p>
-		<p id="percent_msg" style="position:fixed;left:300px;top:300px;font-size:20px;color:green;"></p>
-		 <button id="ref" onclick="refresh();" style="position:fixed;top:520px;left:330px;visibility: hidden;">RELOAD</button>
+		<button id="sub"onclick="reload();">RESET GAME</button>
+		<button id="chk" onmousedown="test()" onmouseup="change()" onclick="chk_count()">CHECK ERROR</button>
+		<button id="score" onclick="submit();stoop();">SCORE</button>
+		<button id="gen" onclick="generate();">GENERATE GAME BOARD</button>
+		<button id="start" onclick="time();">START GAME</button>
+		<p id="count" >0</p>
+		<button id="ref" onclick="refresh();" >PLAY AGAIN</button>
     </div>
-	   <p id="time_msg" style="position:fixed;left:220px;bottom:540px;font-size:20px;color:green;"> </p>
-	   <P id="chk_msg"style="position:fixed;left:220px;bottom:500px;font-size:20px;color:green;"></P>
-	   <p id="score_msg" style="font-size:20px;position:fixed;left:220px;bottom:460px;color:green;"></p>
-	   <p id="tim" style="position:fixed;left:820px;top:160px;font-size: 20px;">TIME : <label id="seconds" style="color:red;">0</label> s</p>
-	   <p id="tim2" style="position:fixed;left:820px;top:160px;font-size: 20px;color:red;"></p>
+	   <p id="time_msg"> </p>
+	   <P id="chk_msg"></P>
+	   <p id="score_msg"></p>
+	   <p id="tim">TIME : <label id="seconds" style="color:red;">0</label> s</p>
+	   <p id="tim2"></p>
  </div>
-	
-  </body>
+ <div id="instr">
+		<p>1. Click on GENERATE GAME BOARD button to generate a variety of boards.<br>2. Click on START GAME button to start the timer.<br>3. Once you have filled the table, you can use the CHECK ERROR button to look out for errors.<br>4.Click on the SCORE button to view your score at the end of the game.<br>5. Click on PLAY AGAIN button to play the game again.<br>Note: The usage of CHECK ERROR button more than TWICE results a penalty of -5.</p>
+ </div>
+</body>
 </html>
